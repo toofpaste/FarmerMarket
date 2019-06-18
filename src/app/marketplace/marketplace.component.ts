@@ -1,24 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Farmer } from './../farmer/farmer.model';
 import { Router } from '@angular/router';
+import { FarmerService } from './../farmer.service';
 
 @Component({
   selector: 'app-marketplace',
   templateUrl: './marketplace.component.html',
-  styleUrls: ['./marketplace.component.css']
+  styleUrls: ['./marketplace.component.css'],
+  providers: [FarmerService]
 })
 export class MarketplaceComponent implements OnInit {
-
-  farmers: Farmer[] = [
-    new Farmer("Old McDonald", "French Fries", "So good, you'll come back for more", 1),
-    new Farmer("Old McGreggor", "Little Bunny Foofoo", "Finally caught that damn rabbit in my cabbage patch", 2),
-    new Farmer("Johnny Beanground", "Coffee Espresso Shots", "Artisnally crafted in a press en français", 3),
-    new Farmer("Arthur Hoggett", "Pork", "Very tender suckling pig", 4)
-  ];
-  
-  constructor(private router: Router){}
+  farmers: Farmer[];
+  constructor(private router: Router, private farmerService: FarmerService){}
 
   ngOnInit() {
+    this.farmers = this.farmerService.getFarmers();
   }
 
   goToDetailPage(clickedFarmer: Farmer) {
