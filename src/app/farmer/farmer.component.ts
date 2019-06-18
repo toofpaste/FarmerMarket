@@ -8,6 +8,7 @@ import { Farmer } from './farmer.model';
   templateUrl: './farmer.component.html',
   styleUrls: ['./farmer.component.css']
 })
+
 export class FarmerComponent implements OnInit {
   
   farmerId: number = null;
