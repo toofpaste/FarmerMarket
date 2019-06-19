@@ -5,13 +5,16 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 @Injectable()
 export class FarmerService {
+  farmers: FirebaseListObservable<any[]>;
   farmerId: number;
   farmerToDisplay: Farmer;
-
-  constructor() { }
+  
+  constructor(private database: AngularFireDatabase) {
+    this.farmers = database.list('farmers');
+   }
 
   getFarmers() {
-    return FARMERS;
+    return this.farmers;
   }
 
   getFarmerById(farmerId: number){

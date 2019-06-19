@@ -12,13 +12,17 @@ import { FarmerComponent } from './farmer/farmer.component';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
   authDomain: masterFirebaseConfig.authDomain,
   databaseURL: masterFirebaseConfig.databaseURL,
-  storageBucket: masterFirebaseConfig.storageBucket
+  storageBucket: masterFirebaseConfig.storageBucket,
+  projectId: masterFirebaseConfig.projectId,
+  messagingSenderId: masterFirebaseConfig.messagingSenderId,
+  appId: masterFirebaseConfig.appId
 };
 
 @NgModule({
@@ -32,7 +36,9 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    routing
+    routing,
+    AngularFireModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
